@@ -4,13 +4,16 @@ import { BrowserRouter as Router } from "react-router-dom";
 import s from "./app.module.scss";
 import { renderRoutes } from "./tools/route-tool";
 import routes from "./routes";
-
+import { Layout } from "./components/layout";
 
 // start up
 function App(props: any) {
-  console.log(`props`, props)
-  return <Router>{renderRoutes(routes, props)}</Router>;
-  // return <div>111</div>
+
+  return (
+    <Router>
+      <Layout {...props}>{renderRoutes(routes, props)}</Layout>
+    </Router>
+  );
 }
 
 export default App;

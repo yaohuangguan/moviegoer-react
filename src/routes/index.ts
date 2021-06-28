@@ -8,7 +8,7 @@ export interface IRoute {
     effect: string;
     timeout: number;
     routes?: IArrayRoutes;
-
+    exact?: boolean;
 };
 
 export interface IArrayRoutes extends Array<IRoute> { }
@@ -20,6 +20,7 @@ const routes: IArrayRoutes = [
         component: Home,
         effect: 'none',
         timeout: 0,
+        exact:true,
         routes: [
             {
                 path: '/blog',
