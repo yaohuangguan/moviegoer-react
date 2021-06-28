@@ -1,10 +1,16 @@
 FROM node:15 AS build
+
 WORKDIR /app
-COPY package.json .
+COPY . .
 RUN yarn install
-COPY . ./
+RUN yarn build
 
-ENV PORT 8080
-EXPOSE $PORT
+#prepare nginx
+FROM nginx:1.21.0-alpine
+COPY --from=build /app/dist /usr/share/nginx/html
+RUN rm /etc/nginx/conf.d/default.conf
+COPY nginx/nginx.conf /etc/nginx/conf.d
 
-CMD ["yarn","run","dev"]
+EXPOSE 80
+
+CMD ["nginx", "-g","daemon off;"]
