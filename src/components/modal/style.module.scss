@@ -1,0 +1,79 @@
+:global(.ant-modal-header) {
+    border-bottom: none;
+}
+
+:global(.ant-modal-footer) {
+    border-top: none;
+}
+
+:global(.ant-modal-body) {
+  // margin-bottom: 20px !important;
+  width: 100%;
+
+  :global(.ant-select-item) {
+    // border-bottom: 1px solid $gray-2;
+    height: 36px;
+
+    &:hover {
+      background-color: #f2f4f6;
+    }
+  }
+}
+
+.error-msg {
+  color: #ff0000;
+  margin-top: 4px;
+  font-size: 10px;
+}
+
+.pop-confirm {
+  z-index: 1031;
+
+  :global(.ant-popover) {
+    width: 300px;
+  }
+
+  .pop-title {
+    color: rgb(32, 45, 64);
+    font-size: 18px;
+    font-family: PingFangSC-Semibold;
+    font-weight: 600;
+    letter-spacing: 0;
+  }
+
+  // :global(.ant-popover-inner-content) {
+  //     padding: 20px;
+  // }
+
+  // :global(.ant-popover-message) {
+  //     padding: 0;
+  // }
+
+  // :global(.ant-popover-message-title) {
+  //     padding-left: 0;
+  // }
+
+  // :global(.ant-popover-buttons) {
+  //     display: none !important;
+  // }
+  :global(.ant-popover-content) {
+    :global(.ant-popover-title) {
+      padding: 20px;
+    }
+
+    :global(.ant-popover-inner-content) {
+      padding-top: 0;
+      border: none;
+    }
+  }
+
+  .pop-over-content {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+
+    .pop-button {
+      margin-top: 20px;
+    }
+  }
+}

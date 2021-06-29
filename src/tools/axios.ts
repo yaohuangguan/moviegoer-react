@@ -54,28 +54,21 @@ axios.interceptors.response.use(
   },
   (error) => {
     if (error.response) {
-      console.log(`error.response`, error.response);
       const { status, statusText, data } = error.response;
-
+      // @TODO:  兼容后台
       const wrapupError = `Code ${status}:  ${statusText}`;
       switch (error.response.status) {
         case 401:
-          console.log("401 error");
-
           throw wrapupError;
         case 400:
           throw wrapupError;
         case 403:
           throw wrapupError;
         case 404:
-          console.log(
-            "Interceptor 404 the resources you requested does not exist"
-          );
-          break;
-        default:
           throw wrapupError;
-      }
-      return Promise.reject(error);
+      };
+
+      return Promise.reject(error.response);
     }
   }
 );
@@ -147,4 +140,15 @@ export const useAxios = <T = any>(
   }
 
   return returnValues;
+};
+
+
+export const Api = async (params: useAxiosConfig) => {
+  const source = axios.CancelToken.source();
+
+  return axios({ ...params, cancelToken: source.token })
+    // 直接处理掉其他信息 如果成功的话
+    .then(rsp => rsp.data)
+    // 如果失败先暂时 要error的信息
+    .catch(err => Promise.reject(err))
 }
