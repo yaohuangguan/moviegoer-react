@@ -1,5 +1,5 @@
-import Home from '../views';
-import Blog from '../views/blog';
+import Home from '../views/home';
+import HotSpot from '../views/hotspot';
 
 export interface IRoute {
     path: string;
@@ -20,12 +20,12 @@ const routes: IArrayRoutes = [
         component: Home,
         effect: 'none',
         timeout: 0,
-        exact:true,
+        exact: true,
         routes: [
             {
-                path: '/blog',
-                name: '博客',
-                component: Blog,
+                path: '/spotlights',
+                name: '',
+                component: HotSpot,
                 effect: 'none',
                 timeout: 0,
             },

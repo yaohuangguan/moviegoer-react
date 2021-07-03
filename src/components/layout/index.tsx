@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Layout as LayoutUI, Menu, Avatar, Space, Divider, Button } from "antd";
 import avatarLogo from "/icon-72x72.png";
-const { Header, Content, Footer } = LayoutUI;
+const { Header, Content, Footer, Sider } = LayoutUI;
 import { useHistory } from "react-router";
 import AuthButton from "../auth-button";
 import s from "./layout.module.scss";
@@ -33,18 +33,20 @@ export const Layout = (props: ILayout) => {
             onClick={onMenuClick}
           >
             <Menu.Item key="/">首页</Menu.Item>
-            <Menu.Item key="/blog">博客</Menu.Item>
-            <Menu.Item key="/spotlights">沸点</Menu.Item>
+            <Menu.Item key="/spotlights">热点</Menu.Item>
           </Menu>
         </Space>
 
         <Space split={<Divider type="vertical" />}>
           <AuthButton {...props} />
-          <Button type="link">Github</Button>
+          <Button type="primary">写文章</Button>
         </Space>
       </Header>
 
-      <Content className={s.content}>{props.children}</Content>
+      <LayoutUI className={s.subLayout}>
+        <Content className={s.content}>{props.children}</Content>
+        <Sider className={s.sider}>Sider</Sider>
+      </LayoutUI>
 
       <Footer style={{ textAlign: "center" }}>创作分享平台 2021</Footer>
     </LayoutUI>

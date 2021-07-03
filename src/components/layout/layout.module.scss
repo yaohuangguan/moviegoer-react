@@ -1,17 +1,30 @@
 .layout {
   height: 100%;
   width: 100%;
+  background: #f0f2f5;
 
   .header {
     display: flex;
     background-color: #fff;
     align-items: center;
-    justify-content:space-between;
+    justify-content: space-between;
+    padding: 0px 15% 0px 15%;
   }
 
-  .content {
+  .sub-layout {
+    display: flex;
     height: 100%;
-    padding: 20px 30px 20px 30px;
+    padding: 20px;
+    margin: 0px 15%;
     background-color: #fff;
+
+    .content {
+      background-color: #fff;
+    }
+
+    .sider {
+      background-color: #fff;
+      margin-left: 20px;
+    }
   }
 }
