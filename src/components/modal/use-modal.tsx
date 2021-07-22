@@ -40,11 +40,9 @@ export const useModal = (): useModalReturnObj => {
 
   const onConfirm = state.modal.onOk;
 
-  console.log("onConfirm :>> ", onConfirm);
   const integrateModalProp = {
     ...state.modal,
     onOk() {
-      console.log("onConfirm :>> ", onConfirm);
       setLoading(true);
       onConfirm().finally(() => setLoading(false));
     },
@@ -60,8 +58,6 @@ export const useModal = (): useModalReturnObj => {
   };
 
   const [portalNode] = useState(document.createElement("div"));
-
-  console.log("modalState :>> ", state);
 
   useLayoutEffect(() => {
     return () => {

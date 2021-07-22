@@ -11,7 +11,7 @@ const tailLayout = {
 
 const UserAuthModalView = (props: {
   updateState: any;
-  userAuth: boolean;
+  userAuth: any;
   onSubmit: any;
 }) => {
   const { updateState, onSubmit } = props;

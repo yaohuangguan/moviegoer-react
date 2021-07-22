@@ -1,14 +1,21 @@
-FROM node:15 AS build
+FROM hoosin/alpine-nginx-nodejs:latest AS build
 
-WORKDIR /app
+WORKDIR /vite-app
 COPY . .
 RUN yarn install
 RUN yarn build
 
 #prepare nginx
-FROM nginx:1.21.0-alpine
-COPY --from=build /app/dist /usr/share/nginx/html
-RUN rm /etc/nginx/conf.d/default.conf
+FROM hoosin/alpine-nginx-nodejs:latest
+COPY --from=build /vite-app/dist  /usr/share/nginx/html/
+COPY --from=build /vite-app/package.json .
+
+ARG NODE_ENV
+RUN if [ $NODE_ENV = "development" ]; \
+    then yarn install; \
+    else rm /etc/nginx/conf.d/default.conf; \
+    fi
+
 COPY nginx/nginx.conf /etc/nginx/conf.d
 
 EXPOSE 80
