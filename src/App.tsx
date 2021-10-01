@@ -6,13 +6,8 @@ import { Layout } from "./components/layout";
 import { IComponentOfApp } from "./types/defined";
 import { dispatcher } from "react-dispatch";
 import { HANDLE_USER_SIGNUP, HANDLE_USER_LOGIN } from "./constants";
-import { useImmerReducer } from "use-immer";
-
+import { createStore } from "./store/store";
 const subscriptions = [HANDLE_USER_SIGNUP, HANDLE_USER_LOGIN];
-
-const initialState = {
-  userAuth: false,
-};
 
 function reducer(
   draft: { userAuth: any },
@@ -34,9 +29,9 @@ function reducer(
 
 // start up -> contains user access manage
 function App() {
-  const [state, dispatchReducer] = useImmerReducer(reducer, initialState);
+  const { getState, dispatchReducer } = createStore(reducer);
 
-  console.log(`state`, state);
+  console.log(`state`, getState());
 
   useEffect(() => {
     subscriptions.forEach((type) => {
@@ -50,9 +45,8 @@ function App() {
     };
   }, []);
 
-
   const integrateProps: IComponentOfApp = {
-    ...state,
+    ...getState(),
   };
   return (
     <Router>
