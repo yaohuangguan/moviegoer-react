@@ -8,9 +8,7 @@ import { useModal } from "../modal";
 import { dispatch } from "../../actions";
 import { HANDLE_USER_SIGNUP, HANDLE_USER_LOGIN } from "../../constants";
 interface IAuthButtonProp {
-  openAuthModal: (e?: any) => void;
   userAuth: IUserObj | boolean;
-  handleUserAuthAction: () => any;
 }
 
 const AuthButton = (props: IAuthButtonProp) => {

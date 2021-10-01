@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect } from "react";
 import { BrowserRouter as Router, Switch } from "react-router-dom";
 import { renderRoutes } from "./tools/route-tool";
 import routes from "./routes";
