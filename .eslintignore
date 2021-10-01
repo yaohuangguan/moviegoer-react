@@ -1,0 +1,4 @@
+bin
+/build/*
+example
+.eslintrc.js

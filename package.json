@@ -1,9 +1,11 @@
 {
   "version": "1.0",
   "scripts": {
-    "dev": "vite",
+    "dev": "vite --host",
     "build": "tsc && vite build",
-    "serve": "vite preview"
+    "serve": "vite preview",
+    "prettier": "prettier --check .",
+    "format": "prettier --write ."
   },
   "dependencies": {
     "antd": "^4.16.5",
@@ -20,16 +22,33 @@
     "use-immer": "^0.6.0"
   },
   "devDependencies": {
+    "@commitlint/cli": "^13.2.0",
+    "@commitlint/config-conventional": "^13.2.0",
     "@types/lodash-es": "^4.17.4",
-    "@types/node": "^15.12.5",
+    "@types/node": "^16.10.2",
     "@types/react": "^17.0.0",
     "@types/react-dom": "^17.0.0",
     "@types/react-router": "^5.1.15",
     "@types/react-router-dom": "^5.1.7",
     "@types/react-transition-group": "^4.4.1",
+    "@typescript-eslint/eslint-plugin": "^4.32.0",
     "@vitejs/plugin-react-refresh": "^1.3.1",
+    "eslint": "^7.32.0",
+    "eslint-config-airbnb-base": "^14.2.1",
+    "eslint-config-airbnb-typescript": "^14.0.0",
+    "eslint-config-prettier": "^8.3.0",
+    "eslint-plugin-import": "^2.24.2",
+    "eslint-plugin-react": "^7.26.1",
+    "eslint-plugin-react-hooks": "^4.2.0",
+    "husky": "^7.0.2",
+    "lint-staged": "^11.1.2",
     "sass": "^1.35.1",
     "typescript": "^4.3.2",
     "vite": "^2.3.8"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
   }
 }
