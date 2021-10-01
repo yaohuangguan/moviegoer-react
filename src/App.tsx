@@ -31,8 +31,6 @@ function reducer(
 function App() {
   const { getState, dispatchReducer } = createStore(reducer);
 
-  console.log(`state`, getState());
-
   useEffect(() => {
     subscriptions.forEach((type) => {
       dispatcher.on(type, (data: any) => {
