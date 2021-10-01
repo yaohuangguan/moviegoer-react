@@ -6,6 +6,7 @@
     "serve": "vite preview",
     "prettier": "prettier --check .",
     "format": "prettier --write .",
+    "pre-commit": "lint-staged",
     "postinstall": "husky install"
   },
   "dependencies": {
